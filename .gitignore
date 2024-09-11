@@ -1,1 +1,14 @@
-/register/var/cache/*
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+.env
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> Other files and folder ###
+docker-compose.yml
+###< Other files and folder ###
