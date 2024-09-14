@@ -11,10 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RegisterUser
 {
-    /**
-     *
-     * @Route("/v1/register/user", methods={"POST"}, name="register-user")
-     */
     public function __invoke(RegisterRequest $registerRequest): JsonResponse
     {
         try {

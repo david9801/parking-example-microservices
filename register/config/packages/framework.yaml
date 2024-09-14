@@ -2,15 +2,7 @@ framework:
     secret: '%env(APP_SECRET)%'
     csrf_protection: true
     session: true
-
+    test: true
     validation:
         enable_attributes: true
 
-when@test:
-    framework:
-        test: true
-        session:
-            storage_factory_id: session.storage.factory.mock_file
-
-    validation:
-        enabled: true

@@ -1,5 +1,8 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+accept_route:
+    path: /v1/accept
+    controller: App\Controller\TestAcceptController::__invoke
+    methods: GET
+register_route:
+    path: /v1/register
+    controller: App\Controller\RegisterUser::__invoke
+    methods: POST
