@@ -7,6 +7,7 @@ namespace App\Service;
 use App\Messenger\Message\UserRegisteredMessage;
 use App\Messenger\RoutingKey;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
+use Symfony\Component\Messenger\Exception\ExceptionInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 class RegisterUserService
@@ -15,11 +16,15 @@ class RegisterUserService
     {
     }
 
-    public function __invoke(string $name, string $email)
+    /**
+     * @throws ExceptionInterface
+     */
+    public function __invoke(string $name, string $email): void
     {
+        $data = new UserRegisteredMessage($name, $email);
         $this->bus->dispatch(
-            new UserRegisteredMessage($name, $email),
-            [new AmqpStamp(RoutingKey::REGISTER_APPLICATION_QUE)]
+            $data,
+            [new AmqpStamp(RoutingKey::REGISTER_APPLICATION_QUEUE)]
         );
     }
 }

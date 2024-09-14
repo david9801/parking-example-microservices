@@ -9,6 +9,7 @@ use App\Service\RegisterUserService;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\Exception\ExceptionInterface;
 
 class RegisterUser
 {
@@ -25,6 +26,10 @@ class RegisterUser
             return new JsonResponse([
                 'message' => $e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
+        } catch (ExceptionInterface $e) {
+            return new JsonResponse([
+                'message' => $e->getMessage(),
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

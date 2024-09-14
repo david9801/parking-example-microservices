@@ -7,24 +7,24 @@ namespace App\Messenger\Message;
 class UserRegisteredMessage
 {
     private ?string $name;
-    private string $email;
+    private ?string $email;
 
     /**
      * @param string|null $name
-     * @param string $email
+     * @param string|null $email
      */
-    public function __construct(?string $name, string $email)
+    public function __construct(?string $name, ?string $email)
     {
         $this->name = $name;
         $this->email = $email;
     }
 
-    public function name(): ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function email(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
