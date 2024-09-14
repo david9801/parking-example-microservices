@@ -4,19 +4,28 @@ services:
         autowire: true
         autoconfigure: true
 
-    App\Listener\JsonExceptionResponseTransformerListener:
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
-
-    App\Http\DTO\RegisterRequestArgumentResolver:
-        arguments:
-            $validator: '@validator'
-        tags:
-            - { name: 'controller.argument_value_resolver', priority: 10 }
-
     App\:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    App\Controller\RegisterUser:
+        public: true
+        tags: ['controller.service_arguments']
+
+    App\Controller\:
+        resource: '../src/Controller/'
+        public: true
+        tags: ['controller.service_arguments']
+
+    App\Listener\JsonExceptionResponseTransformerListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
+
+    App\Service\RegisterUserService:
+        public: true
+        arguments:
+            $bus: '@messenger.bus.default'
