@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace App\Controller;
+namespace App\Controller\User;
 
-use App\Http\DTO\RegisterRequest;
-use App\Service\RegisterUserService;
+use App\Http\User\DTO\RegisterRequest;
+use App\Service\User\RegisterUserService;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,8 +20,13 @@ class RegisterUser
     public function __invoke(RegisterRequest $registerRequest): JsonResponse
     {
         try {
-            $this->registerUserService->__invoke($registerRequest->name(), $registerRequest->email());
-            return new JsonResponse(['name' => $registerRequest->name()]);
+            $this->registerUserService->__invoke(
+                $registerRequest->name(),
+                $registerRequest->surname(),
+                $registerRequest->email(),
+                $registerRequest->password()
+            );
+            return new JsonResponse(['ok' => true]);
         } catch (Exception $e) {
             return new JsonResponse([
                 'message' => $e->getMessage(),

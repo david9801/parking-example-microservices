@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Messenger;
+namespace App\Messenger\User;
 
 abstract class RoutingKey
 {

@@ -2,6 +2,7 @@ accept_route:
     path: /v1/accept
     controller: App\Controller\TestAcceptController::__invoke
     methods: GET
+
 register_route:
     path: /v1/register
     controller: App\Controller\RegisterUser::__invoke

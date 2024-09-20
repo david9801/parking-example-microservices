@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace App\Http\DTO;
+namespace App\Http\User\DTO;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ValueResolverInterface;
