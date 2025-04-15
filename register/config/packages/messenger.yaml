@@ -19,4 +19,4 @@ framework:
                             binding_keys: [ register_application_queue ]
 
         routing:
-            'App\Messenger\Message\UserRegisteredMessage': async_register_application
+            'App\Messenger\User\Message\UserRegisteredMessage': async_register_application

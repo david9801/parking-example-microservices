@@ -12,7 +12,7 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
-    App\Controller\RegisterUser:
+    App\Controller\User\RegisterUser:
         public: true
         tags: ['controller.service_arguments']
 
@@ -25,7 +25,7 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
 
-    App\Service\RegisterUserService:
+    App\Service\User\RegisterUserService:
         public: true
         arguments:
             $bus: '@messenger.bus.default'

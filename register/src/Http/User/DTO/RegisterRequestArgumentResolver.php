@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class RegisterRequestArgumentResolver implements ValueResolverInterface
+readonly class RegisterRequestArgumentResolver implements ValueResolverInterface
 {
     public function __construct(private ValidatorInterface $validator)
     {

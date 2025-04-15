@@ -32,8 +32,8 @@ readonly class JsonExceptionResponseTransformerListener
     private function prepareResponse(array $data): JsonResponse
     {
         $response = new JsonResponse($data, $data['code']);
-        $response->headers->set('Server-Time', \time());
-        $response->headers->set('X-Error-Code', $data['code']);
+        $response->headers->set('Server-Time', (string) \time());
+        $response->headers->set('X-Error-Code', (string) $data['code']);
 
         return $response;
     }
