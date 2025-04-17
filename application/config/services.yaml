@@ -1,11 +1,8 @@
-parameters:
-
 services:
     _defaults:
         autowire: true
         autoconfigure: true
-    App\Messenger\Handler\UserRegisteredMessageHandler:
-        tags: [ 'messenger.message_handler' ]
+
     App\:
         resource: '../src/'
         exclude:
@@ -13,4 +10,6 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Messenger\User\Handler\UserRegisteredMessageHandler:
+        tags: [messenger.message_handler]
 

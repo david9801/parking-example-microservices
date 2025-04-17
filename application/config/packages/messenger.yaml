@@ -10,6 +10,7 @@ framework:
         transports:
             async_register_application:
                 dsn: '%env(string:MESSENGER_TRANSPORT_DSN)%'
+                serializer: messenger.transport.symfony_serializer
                 options:
                     vhost: '%env(string:MESSENGER_VHOST)%'
                     exchange:
@@ -22,4 +23,4 @@ framework:
                 dsn: 'doctrine://default?queue_name=failed'
 
         routing:
-            'App\Messenger\Message\UserRegisteredMessage': async_register_application
+            'App\Messenger\User\Message\UserRegisteredMessage': async_register_application

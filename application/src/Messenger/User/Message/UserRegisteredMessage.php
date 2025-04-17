@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Messenger\User\Message;
 
 class UserRegisteredMessage
@@ -13,16 +11,17 @@ class UserRegisteredMessage
 
     public function __construct(string $name, ?string $surname, string $email, string $password)
     {
+//        error_log('[UserRegisteredMessage] : ' . json_encode([
+//                'name' => $name,
+//                'surname' => $surname,
+//                'email' => $email,
+//                'password' => $password,
+//            ]));
+
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
         $this->password = $password;
-        error_log('🛬 UserRegisteredMessage creado: ' . json_encode([
-                'name' => $name,
-                'surname' => $surname,
-                'email' => $email,
-                'password' => $password, // ⚠️ solo para debug, no dejarlo así en producción
-            ]));
     }
 
     public function getName(): string { return $this->name; }
